@@ -34,37 +34,42 @@ You can replace `<dataset>` with `{mit-states, ut-zappos, cgqa}`. The best hyper
 
 ## Model Illustrations
 We also publish the codes of two model variants for effectiveness verification and ablation studies.
-- without L-Adapters
+
+### Effectiveness Verification of Adapters
+
+- w/o L-Adapters
 
   - ```
     python train.py --config configs/<dataset>.yml --has_l_adapter False
     ```
 
-- without V-Adapters
+- w/o V-Adapters
 
   - ```
     python train.py --config configs/<dataset>.yml --has_l_adapter False
     ```
 
-- L-Adapter without context
+- L-Adapter w/o context
 
   - ```
     python train.py --config configs/<dataset>.yml --l_adapter_context False
     ```
 
-- V-Adapter without context
+- V-Adapter w/o context
 
   - ```
     python train.py --config configs/<dataset>.yml --v_adapter_context False
     ```
 
-- L&V-Adapter without context
+- L&V-Adapter w/o context
 
   - ```
     python train.py --config configs/<dataset>.yml --v_adapter_context False --l_adapter_context False
     ```
 
-- insertion location of adapters
+### Effectiveness Verification of Adapters
+
+- Insertion Location of Adapters
 
   - ```
     python train.py --config configs/<dataset>.yml --v_adapter_location <location> --l_adapter_location <location>
@@ -72,7 +77,7 @@ We also publish the codes of two model variants for effectiveness verification a
 
   - The value of location can be `'in'` or `'out'`.
 
-- insertion depth of adapters
+- Insertion Depth of Adapters
 
   - ```
     python train.py --config configs/<dataset>.yml --l_adapter_layers <l_adapter_layers_num> --v_adapter_layers <v_adapter_layers_num>
