@@ -67,7 +67,7 @@ We also publish the codes of two model variants for effectiveness verification a
     python train.py --config configs/<dataset>.yml --v_adapter_context False --l_adapter_context False
     ```
 
-### Effectiveness Verification of Adapters
+### Ablation Studies
 
 - Insertion Location of Adapters
 
