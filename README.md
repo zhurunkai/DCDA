@@ -13,7 +13,7 @@ We experiment with three datasets: MIT-States, UT-Zappos, and C-GQA.
 sh download_datasets.sh
 ```
 
-If you already have setup the datasets, you can use symlink and ensure the following paths exist: `data/<datasets> where <datasets> = {'mit-states', 'ut-zappos', 'cgqa'}.`
+If you already have setup the datasets, you can use symlink and ensure the following paths exist: `DATA_ROOT/<datasets> where <datasets> = {'mit-states', 'ut-zappos', 'cgqa'}.`
 
 ## Training
 
