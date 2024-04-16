@@ -8,59 +8,57 @@ The model is developed using PyTorch with environment requirements provided in `
 ## Dataset Preparations
 We experiment with three datasets: MIT-States, UT-Zappos, and C-GQA.
 
-```
-sh utils/download_datasets.sh
-```
+Please create a new root folder `DATA_ROOT` for saving the datasets, and download data using the commands in the following script.
 
-If you already have setup the datasets, you can use symlink and ensure the following paths exist: `DATA_ROOT/<datasets> where <datasets> = {'mit-states', 'ut-zappos', 'cgqa'}.`
+```
+sh download_datasets.sh
+```
 
 ## Training
+
+Please replace `<dataset>` with `{mit-states, ut-zappos, cgqa}`. The best hyperparameters are included in the corresponding `yml` file.
 
 ```
 python train.py --config configs/<dataset>.yml
 ```
 
-You can replace `<dataset>` with `{mit-states, ut-zappos, cgqa}`. The best hyperparameters are included in the paper.
 
 ## Evaluation
-To evaluate the model, specify the directory where the checkpoint is located in config.
-
+We use `<ckpt_location>` to save the best model w.r.t the validation set. Please specify it from `configs/` before evaluating the model. 
 ```
 python evaluate.py --config configs/<dataset>.yml --eval_load_model <ckpt_location>
 ```
 
-You can replace `<dataset>` with `{mit-states, ut-zappos, cgqa}`. The best hyperparameters are included in the paper. In addition, replace`<ckpt_location>`with the path of your actual checkpoint.
+## Model Variants
+In our paper, we develop a series of model variants for evaluating the effectiveness of L-Adapters and V-Adapters, and testing the best location and depth to insert adapters.
+ 
+### Effectiveness of Adapters
 
-## Model Illustrations
-We also publish the codes of two model variants for effectiveness verification and ablation studies.
-
-### Effectiveness Verification of Adapters
-
-- w/o L-Adapters
+- removing L-Adapters, i.e., `w/o L-Adapters` in the paper
 
   ```
   python train.py --config configs/<dataset>.yml --has_l_adapter False
   ```
 
-- w/o V-Adapters
+- removing V-Adapters, i.e., `w/o V-Adapters` in the paper
 
   ```
   python train.py --config configs/<dataset>.yml --has_l_adapter False
   ```
 
-- L-Adapter w/o context
+- L-Adapters with composition context removed, i.e., `L-Adapter w/o context` in the paper
 
   ```
   python train.py --config configs/<dataset>.yml --l_adapter_context False
   ```
 
-- V-Adapter w/o context
+- V-Adapters with composition context removed, i.e., `V-Adapter w/o context` in the paper
 
   ```
   python train.py --config configs/<dataset>.yml --v_adapter_context False
   ```
 
-- L&V-Adapter w/o context
+- Removing composition context in both L-Adapters and V-Adapters i.e.,  `L&V-Adapter w/o context` in the paper
 
   ```
   python train.py --config configs/<dataset>.yml --v_adapter_context False --l_adapter_context False
@@ -68,19 +66,20 @@ We also publish the codes of two model variants for effectiveness verification a
 
 ### Ablation Studies
 
-- Insertion Location of Adapters
+- testing Insertion Location of Adapters
 
   ```
   python train.py --config configs/<dataset>.yml --v_adapter_location <location> --l_adapter_location <location>
   ```
 
-  The value of location can be `'in'` or `'out'`.
+  The choice of `<location>` can be `'in'` or `'out'`.
 
-- Insertion Depth of Adapters
+- testing Insertion Depth of Adapters
 
   ```
   python train.py --config configs/<dataset>.yml --l_adapter_layers <l_adapter_layers_num> --v_adapter_layers <v_adapter_layers_num>
   ```
+  The values of `<l_adapter_layers_num>` can vary from 0 to 24.
 
   
 
