@@ -1,0 +1,15 @@
+experiment_name: cgqa
+dataset: cgqa
+device: cuda
+train_batch_size: 16
+eval_batch_size: 64
+context_length: 13
+lr: 1e-5
+l_adapter_layers: 3
+v_adapter_layers: 3
+graph_init: None
+save_model: True
+save_path: ./data/cgqa
+use_soft_embeddings: None
+train_soft_embeddings: None
+

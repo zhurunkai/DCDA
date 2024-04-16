@@ -1,0 +1,15 @@
+experiment_name: mit-states
+dataset: mit-states
+device: cuda
+train_batch_size: 16
+eval_batch_size: 64
+context_length: 16
+lr: 5e-5
+l_adapter_layers: 3
+v_adapter_layers: 3
+graph_init: None
+save_model: True
+save_path: ./data/mit-states
+use_soft_embeddings: None
+train_soft_embeddings: None
+
