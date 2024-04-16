@@ -9,7 +9,7 @@ l_adapter_layers: 3
 v_adapter_layers: 3
 graph_init: None
 save_model: True
-save_path: ./data/mit-states
+save_path: ./logs/mit-states
 use_soft_embeddings: None
 train_soft_embeddings: None
 

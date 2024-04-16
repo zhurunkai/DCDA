@@ -9,7 +9,7 @@ l_adapter_layers: 3
 v_adapter_layers: 3
 graph_init: None
 save_model: True
-save_path: ./data/ut-zappos
+save_path: ./logs/ut-zappos
 use_soft_embeddings: None
 train_soft_embeddings: None
 
