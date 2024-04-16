@@ -39,49 +39,49 @@ We also publish the codes of two model variants for effectiveness verification a
 
 - w/o L-Adapters
 
-  - ```
-    python train.py --config configs/<dataset>.yml --has_l_adapter False
-    ```
+  ```
+  python train.py --config configs/<dataset>.yml --has_l_adapter False
+  ```
 
 - w/o V-Adapters
 
-  - ```
-    python train.py --config configs/<dataset>.yml --has_l_adapter False
-    ```
+  ```
+  python train.py --config configs/<dataset>.yml --has_l_adapter False
+  ```
 
 - L-Adapter w/o context
 
-  - ```
-    python train.py --config configs/<dataset>.yml --l_adapter_context False
-    ```
+  ```
+  python train.py --config configs/<dataset>.yml --l_adapter_context False
+  ```
 
 - V-Adapter w/o context
 
-  - ```
-    python train.py --config configs/<dataset>.yml --v_adapter_context False
-    ```
+  ```
+  python train.py --config configs/<dataset>.yml --v_adapter_context False
+  ```
 
 - L&V-Adapter w/o context
 
-  - ```
-    python train.py --config configs/<dataset>.yml --v_adapter_context False --l_adapter_context False
-    ```
+  ```
+  python train.py --config configs/<dataset>.yml --v_adapter_context False --l_adapter_context False
+  ```
 
 ### Ablation Studies
 
 - Insertion Location of Adapters
 
-  - ```
-    python train.py --config configs/<dataset>.yml --v_adapter_location <location> --l_adapter_location <location>
-    ```
+  ```
+  python train.py --config configs/<dataset>.yml --v_adapter_location <location> --l_adapter_location <location>
+  ```
 
-  - The value of location can be `'in'` or `'out'`.
+  The value of location can be `'in'` or `'out'`.
 
 - Insertion Depth of Adapters
 
-  - ```
-    python train.py --config configs/<dataset>.yml --l_adapter_layers <l_adapter_layers_num> --v_adapter_layers <v_adapter_layers_num>
-    ```
+  ```
+  python train.py --config configs/<dataset>.yml --l_adapter_layers <l_adapter_layers_num> --v_adapter_layers <v_adapter_layers_num>
+  ```
 
-    
+  
 
