@@ -1,0 +1,19 @@
+experiment_name: cgqa
+clip_model: ViT-B/32
+dataset: cgqa
+device: cuda
+train_batch_size: 16
+eval_batch_size: 64
+context_length: 13
+lr: 1e-5
+l_adapter_layers: 3
+v_adapter_layers: 3
+graph_init: None
+save_path: ./logs/cgqa
+use_soft_embeddings: None
+train_soft_embeddings: None
+vision_share: False
+epoch_switch: True
+step_switch: False
+switch_mode: pn
+

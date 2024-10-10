@@ -1,0 +1,19 @@
+experiment_name: mit-states
+clip_model: ViT-L/14
+dataset: mit-states
+device: cuda
+train_batch_size: 16
+eval_batch_size: 64
+context_length: 16
+lr: 5e-5
+l_adapter_layers: 3
+v_adapter_layers: 3
+graph_init: None
+save_path: ./logs/mit-states
+use_soft_embeddings: None
+train_soft_embeddings: None
+vision_share: True
+epoch_switch: False
+step_switch: True
+switch_mode: pnb
+
