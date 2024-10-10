@@ -29,6 +29,10 @@ We use `<ckpt_location>` to save the best model. Please specify it from `logs/` 
 ```
 python evaluate.py --config configs/<dataset>.yml --eval_load_model <ckpt_location>
 ```
+In the open-world setting, we apply a tailored approach for the L-adapter and utilize sharding to optimize memory efficiency.
+```
+python split_evaluate.py --config configs/<dataset>.yml --eval_load_model <ckpt_location>
+```
 
 ## Model Variants
 In our paper, we develop a series of model variants for evaluating the effectiveness of L-Adapters and V-Adapters, and testing the best location and depth to insert adapters.
