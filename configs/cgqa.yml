@@ -16,4 +16,5 @@ vision_share: False
 epoch_switch: True
 step_switch: False
 switch_mode: pn
+all_fine_tuning: True
 

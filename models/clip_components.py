@@ -174,7 +174,8 @@ class Transformer(nn.Module):
                         attn_mask=attn_mask,
                         if_fusion=if_fusion,
                         visual_attr_adapter=visual_attr_adapter,
-                        visual_obj_adapter=visual_obj_adapter
+                        visual_obj_adapter=visual_obj_adapter,
+                        config=config
                     )
                 )
                 i += 1
@@ -182,8 +183,8 @@ class Transformer(nn.Module):
         else:
             if config:
                 indice = (
-                    layers - config.l_adater_layers
-                    if layers - config.l_adater_layers > 0
+                    layers - config.l_adapter_layers
+                    if layers - config.l_adapter_layers > 0
                     else 0
                 )
             else:
@@ -192,7 +193,7 @@ class Transformer(nn.Module):
             i = 0
             for _ in range(layers):
                 if i < indice or not config.l_adapter_context:
-                    res_layers.append(ResidualAttentionBlock(width, heads, attn_mask))
+                    res_layers.append(ResidualAttentionBlock(width, heads, attn_mask, config=config))
                 else:
                     res_layers.append(
                         ResidualAttentionBlock(

@@ -3,6 +3,7 @@ import argparse
 DATA_FOLDER = "./DATA_ROOT"
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument("--config", type=str, default="configs/mit-states.yml")
 parser.add_argument("--experiment_name", type=str, default="experiment_name")
 parser.add_argument("--dataset", type=str, default="mit-states")
 parser.add_argument("--clip_model", type=str, default="ViT-L/14")
@@ -46,5 +47,11 @@ parser.add_argument("--l_adapter_context", default="True", type=str)
 parser.add_argument("--v_adapter_context", default="True", type=str)
 parser.add_argument("--l_adapter_location", default="in", type=str)
 parser.add_argument("--v_adapter_location", default="out", type=str)
+parser.add_argument("--vision_share", default=True, type=bool)
+parser.add_argument("--epoch_switch", default=False, type=bool)
+parser.add_argument("--step_switch", default=True, type=bool)
+parser.add_argument("--all_fine_tuning", default=False, type=bool)
+parser.add_argument("--feasibility_init", default="None", type=str)
+
 
 

@@ -344,6 +344,8 @@ class LAdapter(nn.Module):
         if not config.graph_init:
             self.train_adj = self.adj_from_pairs(self.dataset.train_pairs)
             self.all_adj = self.adj_from_pairs(self.dataset.pairs)
+            if not os.path.exists(f"{DATA_FOLDER}/graph_init/"):
+                os.makedirs(f"{DATA_FOLDER}/graph_init/")
             torch.save(
                 {"all_adj": self.all_adj, "train_adj": self.train_adj},
                 f"{DATA_FOLDER}/graph_init/{config.dataset}.t7",

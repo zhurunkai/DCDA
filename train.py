@@ -147,6 +147,7 @@ def train_model(
 if __name__ == "__main__":
     config = parser.parse_args()
     load_args(config.config, config)
+    config.lr = float(config.lr)
     config.save_path = path2optional_bool(config.save_path)
     config.load_model = path2optional_bool(config.load_model)
     config.use_soft_embeddings = path2optional_bool(config.use_soft_embeddings)
@@ -155,13 +156,11 @@ if __name__ == "__main__":
     config.multi_prompt_type = str2bool(config.multi_prompt_type)
     config.graph_init = path2optional_bool(config.graph_init)
     config.train_token_embeddings = str2bool(config.train_token_embeddings)
-    config.vision_share = str2bool(config.vision_share)
-    config.epoch_switch = str2bool(config.epoch_switch)
-    config.step_switch = str2bool(config.step_switch)
-    config.has_l_adapter = str2bool(config.step_switch)
-    config.has_v_adapter = str2bool(config.step_switch)
-    config.l_adapter_context = str2bool(config.step_switch)
-    config.v_adapter_context = str2bool(config.step_switch)
+    config.has_l_adapter = str2bool(config.has_l_adapter)
+    config.has_v_adapter = str2bool(config.has_v_adapter)
+    config.l_adapter_context = str2bool(config.l_adapter_context)
+    config.v_adapter_context = str2bool(config.v_adapter_context)
+    config.feasibility_init = path2optional_bool(config.feasibility_init)
     save_experiment_path = os.path.join(config.save_path, config.experiment_name)
 
     if not os.path.exists(save_experiment_path):
@@ -252,7 +251,7 @@ if __name__ == "__main__":
                 "weight_decay": 5e-5,
             }
         )
-    if config.l_adater_layers != 0:
+    if config.l_adapter_layers != 0:
         parameter_groups.append(
             {"params": graph_parameters, "lr": config.lr, "weight_decay": 5e-5}
         )
@@ -267,5 +266,12 @@ if __name__ == "__main__":
         {"params": automatic_weighted_loss_parameters, "lr": config.lr, "weight_decay": 5e-5}
     )
     optimizer = torch.optim.Adam(parameter_groups)
-
+    model, optimizer = train_model(model, optimizer, train_dataset, config, scaler)
+    if config.save_model:
+        torch.save(
+            model.state_dict(),
+            os.path.join(
+                config.save_path, config.experiment_name, "final_model.pt"
+            ),
+        )
     print("finished")
